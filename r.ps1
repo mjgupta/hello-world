@@ -1,0 +1,1 @@
+adb shell getevent /dev/input/event8 | ForEach-Object {$(Get-Date -Format "yyyy-MM-dd HH:mm:ss.ffffff") + " " + $_} > event.log

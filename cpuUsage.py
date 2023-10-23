@@ -2,22 +2,32 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Data
-groups = ['Group 1', 'Group 2']
+values = [47.09, 44.13, 57.8, 22.04, 19.75, 21.38]
 labels = ['Bar 1', 'Bar 2', 'Bar 3']
-values = [[47.09, 44.13, 57.8], [22.04, 19.75, 21.38]
+group_labels = ['Group 1', 'Group 2']
+bar_width = 0.35  # Width of each bar
 
-# Set the bar colors
-colors = ['lightblue', 'lightcoral', 'lightgreen']
+# Create an array of indices for the x-axis
+x = np.arange(len(labels))
 
-# Number of bars
-num_bars = len(labels)
-bar_width = 0.35
-index = np.arange(num_bars)
+# Split the values into two groups, each containing three bars
+group1_values = values[:3]
+group2_values = values[3:]
 
-# Create the grouped bar plot
-for i in range(len(labels)):
-    plt.bar(index + i * bar_width, [value[i] for value in values], bar_width, label=labels[i], color=colors[i])
+# Create subplots
+fig, ax = plt.subplots()
 
-# Set the x-axis labels
-plt.xlabel('Groups')
-plt.xticks(index
+# Plot the bars for each group
+bar1 = ax.bar(x - bar_width/2, group1_values, bar_width, label=group_labels[0])
+bar2 = ax.bar(x + bar_width/2, group2_values, bar_width, label=group_labels[1])
+
+# Set labels and title
+ax.set_xlabel('Bars')
+ax.set_ylabel('Values')
+ax.set_title('Grouped Bar Chart')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+
+# Show the plot
+plt.show()

@@ -33,8 +33,14 @@ ax1.text(x=x[1]+0.2, y=http_latency_disabled+5, s='X')
 ax1.set_ylabel('In game latency in ms')
 
 # Plot scatter chart  
+# Plot scatter values 
 ax2.scatter(x - 0.2, [fast_bw_enabled, fast_bw_disabled], marker='x', c='yellow')
-ax2.scatter(x + 0.2, [http_bw_enabled, http_bw_disabled], marker='x', c='orange')
+ax2.text(x[0]-0.2, fast_bw_enabled/1000, f"{fast_bw_enabled/1000:.2f}")
+ax2.text(x[1]-0.2, fast_bw_disabled/1000, f"{fast_bw_disabled/1000:.2f}")
+
+ax2.scatter(x + 0.2, [http_bw_enabled, http_bw_disabled], marker='x', c='orange') 
+ax2.text(x[0]+0.2, http_bw_enabled/1000, f"{http_bw_enabled/1000:.2f}")
+ax2.text(x[1]+0.2, http_bw_disabled/1000, f"{http_bw_disabled/1000:.2f}")
 
 # Format secondary y-axis
 ax2.set_ylabel('Background Rx Throughput in Mbps')

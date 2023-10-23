@@ -3,31 +3,28 @@ import numpy as np
 
 # Data
 values = [47.09, 44.13, 57.8, 22.04, 19.75, 21.38]
-labels = ['Bar 1', 'Bar 2', 'Bar 3']
-group_labels = ['Group 1', 'Group 2']
-bar_width = 0.35  # Width of each bar
+
+# Define colors for the bars
+colors = ['blue', 'red', 'green', 'blue', 'red', 'green']
 
 # Create an array of indices for the x-axis
-x = np.arange(len(labels))
+x = np.arange(len(values))
 
-# Split the values into two groups, each containing three bars
-group1_values = values[:3]
-group2_values = values[3:]
-
-# Create subplots
+# Create a figure and axis
 fig, ax = plt.subplots()
 
-# Plot the bars for each group
-bar1 = ax.bar(x - bar_width/2, group1_values, bar_width, label=group_labels[0])
-bar2 = ax.bar(x + bar_width/2, group2_values, bar_width, label=group_labels[1])
+# Create the bar chart with the specified colors
+bars = ax.bar(x, values, color=colors, width=0.7)
+
+# Add a gap between the 3rd and 4th bar
+ax.bar(3, 0, color='white', width=0.7)
 
 # Set labels and title
-ax.set_xlabel('Bars')
-ax.set_ylabel('Values')
-ax.set_title('Grouped Bar Chart')
-ax.set_xticks(x)
-ax.set_xticklabels(labels)
-ax.legend()
+ax.set_xlabel('Size')
+ax.set_ylabel('CPU')
+ax.set_title('Bar Chart')
+ax.set_xticks([1.5, 4.5])
+ax.set_xticklabels(['Small', 'Big'])
 
 # Show the plot
 plt.show()

@@ -18,7 +18,8 @@ bars = ax.bar(x, values, color=colors, width=0.7)
 
 # Add a gap between the 3rd and 4th bar
 ax.bar(3, 0, color='white', width=0.7)
-
+for bar, value in zip(bars, values):
+    ax.annotate(f'{value:.2f}', (bar.get_x() + bar.get_width() / 2, bar.get_height()), ha='center', va='bottom')
 # Set labels and title
 ax.set_xlabel('Size')
 ax.set_ylabel('CPU')

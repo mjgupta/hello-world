@@ -42,6 +42,16 @@ ax2.scatter(x + 0.2, [http_bw_enabled, http_bw_disabled], marker='x', c='orange'
 ax2.text(x[0]+0.2, http_bw_enabled/1000, f"{http_bw_enabled/1000:.2f}")
 ax2.text(x[1]+0.2, http_bw_disabled/1000, f"{http_bw_disabled/1000:.2f}")
 
+# Get scatter xdata and ydata 
+x1, y1 = ax2.collections[0].get_offsets().T
+x2, y2 = ax2.collections[1].get_offsets().T
+
+# Annotations above scatter points
+ax2.text(x1[0], y1[0]+0.5, 'X%', color='white') 
+ax2.text(x1[1], y1[1]+0.5, 'X%', color='white')
+
+ax2.text(x2[0], y2[0]+0.5, 'X%', color='white')
+ax2.text(x2[1], y2[1]+0.5, 'X%', color='white')
 # Format secondary y-axis
 ax2.set_ylabel('Background Rx Throughput in Mbps')
 
